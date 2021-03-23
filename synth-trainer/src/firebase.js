@@ -47,12 +47,14 @@ export const generateUserDocument = async (user, additionalData) => {
   if (!snapshot.exists) {
     const { email, displayName, photoURL } = user;
     const inProgressModules = [];
+    const completedModules = [];
     try {
       await userRef.set({
         displayName,
         email,
         photoURL,
         inProgressModules,
+        completedModules,
         ...additionalData,
       });
     } catch (error) {
@@ -199,6 +201,21 @@ const setDateAccessedModule = (currentInProgressModules, currentModule) => {
   }
 };
 
+const setScoreModule = (currentFinishedModules, currentModule, score) => {
+  const date = new Date();
+  let currentModuleInstance = currentFinishedModules.find(
+    (module) => module.name === currentModule
+  );
+  if (currentModuleInstance === undefined) {
+    return [0, { name: currentModule, score: score, dateCompleted: date }];
+  } else if(currentModuleInstance.score < score) {
+    currentModuleInstance.score = score;
+    currentModuleInstance.dateCompleted = date;
+    return [1, currentModuleInstance];
+  }
+
+}
+
 export const removeInProgressModule = async (user, module) => {
   const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
   const snapshot = await userRef.get();
@@ -249,5 +266,35 @@ export const getAllModules = async () => {
   const snapshot = await modules.get();
   if (!snapshot.empty) {
     return snapshot.docs.map((doc) => doc.data());
+  }
+};
+
+
+export const addCompletedModules = async (user, currentModule, score) => {
+  const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
+  const snapshot = await userRef.get();
+  if (snapshot.exists) {
+    try {
+      const currentCompletedModules = snapshot.data().completedModules;
+      const newModule = setScoreModule(
+        currentCompletedModule,
+        currentModule,
+        score
+      );
+      if (newModule[0] === 1) {
+        const index = currentCompletedModules
+          .map((module) => {
+            return module.name;
+          })
+          .indexOf(currentModule);
+          currentCompletedModules.splice(index, 1);
+      }
+      currentCompletedModules.push(newModule[1]);
+      await userRef.update({
+        completedModules: currentCompletedModules,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
