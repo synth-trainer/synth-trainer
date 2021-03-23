@@ -270,7 +270,7 @@ export const getAllModules = async () => {
 };
 
 
-export const addCompletedModules = async (user, currentModule, score) => {
+export const addCompletedModules = async (currentModule, score) => {
   const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
   const snapshot = await userRef.get();
   if (snapshot.exists) {

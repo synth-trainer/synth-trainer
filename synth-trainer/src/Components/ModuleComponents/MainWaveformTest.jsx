@@ -24,6 +24,7 @@ import {
   addInProgressModules,
   getModuleRef,
   removeInProgressModule,
+  addCompletedModules,
 } from "../../firebase";
 import { UserContext } from "../../providers/UserProvider";
 import { useEffect } from "react";
@@ -112,7 +113,9 @@ const MainWaveformTest = () => {
         }
 
       case "closeFinalDialog":
-        setUserPassed(undefined);
+        if(userPassed) {
+          addCompletedModules("MainWaveformModule", score);
+        }
         break;
 
       case "home":
