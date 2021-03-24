@@ -15,7 +15,7 @@ const MainWaveformModule = (props) => {
   useEffect(() => {
     const initializeData = async () => {
       const result = await getModuleRef("MainWaveformModule");
-      addInProgressModules(user, "MainWaveformModule");
+      addInProgressModules("MainWaveformModule");
 
       setModuleRef(result);
     };
@@ -75,38 +75,22 @@ const MainWaveformModule = (props) => {
       <Card id="sign-in-card" className="text-center w-50 customCard">
         <Card.Title id="sign-in-label">Intro: Basic Waveforms</Card.Title>
         <Card.Text>
-            Oscillators are the fundamental building blocks of a synths. The word
-            “oscillator” sounds complicated, but it’s a fancy word with a simple
-            meaning. An oscillator creates a sound.
+          Oscillators are the fundamental building blocks of a synths. The word
+          “oscillator” sounds complicated, but it’s a fancy word with a simple
+          meaning. An oscillator creates a sound.
         </Card.Text>
-        <Grid 
-          item 
-          container 
-          direction="row" 
-          spacing={2}
-          alignItems="center"
-        >
-          <Grid 
-            item 
-            xs={12} 
-            sm={6} 
-            md={5}
-          > 
-          <WaveformExample
-            waveform="sine"
-            message="A sine wave is the simplest waveform with no harmonics or overtones. 
+        <Grid item container direction="row" spacing={2} alignItems="center">
+          <Grid item xs={12} sm={6} md={5}>
+            <WaveformExample
+              waveform="sine"
+              message="A sine wave is the simplest waveform with no harmonics or overtones. 
             It generates a smooth, clean sound, much like the way the waveform looks."
-            volume={volume}
-            setVolume={setVolume}
-            buttonHandler={buttonHandler}
-          />
+              volume={volume}
+              setVolume={setVolume}
+              buttonHandler={buttonHandler}
+            />
           </Grid>
-            <Grid 
-              item 
-              xs={12} 
-              sm={6} 
-              md={5}
-            >
+          <Grid item xs={12} sm={6} md={5}>
             <WaveformExample
               waveform="triangle"
               message="Rather than a smooth, curvy waveform, the triangle wave consists of
@@ -120,34 +104,18 @@ const MainWaveformModule = (props) => {
         </Grid>
         <br />
         {/* in between */}
-        <Grid 
-          item 
-          container 
-          direction="row" 
-          spacing={2}
-          alignItems="center"
-        >
-          <Grid 
-            item 
-            xs={12} 
-            sm={6} 
-            md={5}
-          > 
+        <Grid item container direction="row" spacing={2} alignItems="center">
+          <Grid item xs={12} sm={6} md={5}>
             <WaveformExample
-            waveform="square"
-            message="A square wave generates a buzzier tone than a sine wave due to its
+              waveform="square"
+              message="A square wave generates a buzzier tone than a sine wave due to its
             instant changes in amplitude. It introduces harmonics."
-            volume={volume}
-            setVolume={setVolume}
-            buttonHandler={buttonHandler}
+              volume={volume}
+              setVolume={setVolume}
+              buttonHandler={buttonHandler}
             />
           </Grid>
-          <Grid 
-            item 
-            xs={12} 
-            sm={6} 
-            md={5}
-          > 
+          <Grid item xs={12} sm={6} md={5}>
             <WaveformExample
               waveform="sawtooth"
               message="Sawtooth waves generate the richest tones of the 4 common waveforms.
@@ -161,7 +129,7 @@ const MainWaveformModule = (props) => {
         </Grid>
         <br />
         <Button onClick={buttonHandler} name="next">
-            Take the Test!
+          Take the Test!
         </Button>
       </Card>
     </div>

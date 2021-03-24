@@ -57,6 +57,7 @@ const HomePage = () => {
       </h2>
       {inProgressModules.map((module) => {
         if (module.name !== undefined && allModules.length > 0) {
+          console.log(module.name);
           return (
             <Card bg="info" key={module.name}>
               <Card.Title>

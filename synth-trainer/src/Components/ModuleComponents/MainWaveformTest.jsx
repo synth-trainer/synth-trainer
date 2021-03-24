@@ -38,7 +38,7 @@ const MainWaveformTest = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      addInProgressModules(user, "MainWaveformModule");
+      addInProgressModules("MainWaveformModule");
       setModuleRef(await getModuleRef("MainWaveformModule"));
     };
 
@@ -101,12 +101,12 @@ const MainWaveformTest = () => {
         break;
 
       case "replaySound":
-        createSynth();
+        // createSynth();
         playTone("C4");
         break;
 
       case "submit":
-        if (score >= 8) {
+        if (score >= 0) {
           setUserPassed(true);
           break;
         } else {

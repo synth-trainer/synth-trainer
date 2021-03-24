@@ -275,7 +275,7 @@ export const addCompletedModules = async (currentModule, score) => {
     try {
       const currentCompletedModules = snapshot.data().completedModules;
       const newModule = setScoreModule(
-        currentCompletedModule,
+        currentCompletedModules,
         currentModule,
         score
       );
@@ -294,5 +294,13 @@ export const addCompletedModules = async (currentModule, score) => {
     } catch (error) {
       console.error(error);
     }
+  } else {
+    const newModule = setScoreModule([], currentModule, score);
+    await userRef.set(
+      {
+        completedModules: [newModule],
+      },
+      { merge: true }
+    );
   }
 };
