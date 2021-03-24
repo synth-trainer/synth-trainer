@@ -92,6 +92,8 @@ const MainWaveformTest = () => {
         setUserGuess([false, ""]);
         setCurrentTest(currentTest + 1);
         setCanPlayNewSound(false);
+
+        // play random waveform
         waveform = waveforms[Math.floor(Math.random() * waveforms.length)];
         setWaveformHook(waveform);
         createSynth();
@@ -113,7 +115,8 @@ const MainWaveformTest = () => {
         }
 
       case "closeFinalDialog":
-        if(userPassed) {
+        // add current module to completed modules
+        if (userPassed) {
           addCompletedModules("MainWaveformModule", score);
         }
         break;
@@ -129,6 +132,7 @@ const MainWaveformTest = () => {
         break;
 
       case "tryAgain":
+        // reset all test user variables
         setScore(0);
         setCurrentTest(0);
         setUserGuess([false, ""]);
@@ -137,7 +141,9 @@ const MainWaveformTest = () => {
         break;
 
       default:
+        // set user has guess and current guess value
         setUserGuess([true, name]);
+
         if (name === waveformHook) {
           setScore(score + 1);
         }
