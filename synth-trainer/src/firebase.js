@@ -160,7 +160,7 @@ export const changeProfilePic = async (imageUrl) => {
   }
 };
 
-export const addInProgressModules = async (user, currentModule) => {
+export const addInProgressModules = async (currentModule) => {
   const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
   const snapshot = await userRef.get();
   if (snapshot.exists) {
@@ -208,15 +208,14 @@ const setScoreModule = (currentFinishedModules, currentModule, score) => {
   );
   if (currentModuleInstance === undefined) {
     return [0, { name: currentModule, score: score, dateCompleted: date }];
-  } else if(currentModuleInstance.score < score) {
+  } else if (currentModuleInstance.score < score) {
     currentModuleInstance.score = score;
     currentModuleInstance.dateCompleted = date;
     return [1, currentModuleInstance];
   }
+};
 
-}
-
-export const removeInProgressModule = async (user, module) => {
+export const removeInProgressModule = async (module) => {
   const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
   const snapshot = await userRef.get();
   if (snapshot.exists) {
@@ -240,7 +239,7 @@ export const removeInProgressModule = async (user, module) => {
   }
 };
 
-export const getInProgressModules = async (user) => {
+export const getInProgressModules = async () => {
   const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
   const snapshot = await userRef.get();
   if (snapshot.exists) {
@@ -269,7 +268,6 @@ export const getAllModules = async () => {
   }
 };
 
-
 export const addCompletedModules = async (currentModule, score) => {
   const userRef = firestore.doc(`users/${auth.currentUser.uid}`);
   const snapshot = await userRef.get();
@@ -287,7 +285,7 @@ export const addCompletedModules = async (currentModule, score) => {
             return module.name;
           })
           .indexOf(currentModule);
-          currentCompletedModules.splice(index, 1);
+        currentCompletedModules.splice(index, 1);
       }
       currentCompletedModules.push(newModule[1]);
       await userRef.update({
