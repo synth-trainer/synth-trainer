@@ -308,3 +308,21 @@ export const addCompletedModules = async (currentModule, score) => {
     }
   }
 };
+
+// Code Review: Michael Goldberg (copied from email)
+// Many of these methods are confusing to an outsider without any comments. I would suggest adding comments
+// to sections of these methods for clarity. For example:
+// if (newModule[0] === 1) {
+// const index = currentInProgressModules
+//   .map((module) => {
+//     return module.name;
+//   })
+//   .indexOf(currentModule);
+// currentInProgressModules.splice(index, 1);
+// }
+//
+// In this section you return some array with the firt element being a 0 or 1
+// and the next variable is the module you create
+// However, it is not clear what the difference between a 0 and 1 is
+
+// In general, adding comments to clarify your code could help this file
