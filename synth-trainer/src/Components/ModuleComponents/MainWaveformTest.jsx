@@ -108,6 +108,7 @@ const MainWaveformTest = () => {
       case "submit":
         if (score >= 0) {
           setUserPassed(true);
+          addCompletedModules("MainWaveformModule", score);
           break;
         } else {
           setUserPassed(false);
@@ -115,10 +116,6 @@ const MainWaveformTest = () => {
         }
 
       case "closeFinalDialog":
-        // add current module to completed modules
-        if (userPassed) {
-          addCompletedModules("MainWaveformModule", score);
-        }
         break;
 
       case "home":

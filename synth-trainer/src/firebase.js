@@ -203,6 +203,7 @@ const setDateAccessedModule = (currentInProgressModules, currentModule) => {
 
 const setScoreModule = (currentFinishedModules, currentModule, score) => {
   const date = new Date();
+  console.log(currentFinishedModules);
   let currentModuleInstance = currentFinishedModules.find(
     (module) => module.name === currentModule
   );
@@ -273,12 +274,23 @@ export const addCompletedModules = async (currentModule, score) => {
   const snapshot = await userRef.get();
   if (snapshot.exists) {
     try {
-      const currentCompletedModules = snapshot.data().completedModules;
+      const currentCompletedModules =
+        snapshot.data().completedModules !== undefined
+          ? snapshot.data().completedModules
+          : [];
       const newModule = setScoreModule(
         currentCompletedModules,
         currentModule,
         score
       );
+      if (snapshot.data().completedModules === undefined) {
+        await userRef.set(
+          {
+            completedModules: [],
+          },
+          { merge: true }
+        );
+      }
       if (newModule[0] === 1) {
         const index = currentCompletedModules
           .map((module) => {
@@ -294,13 +306,5 @@ export const addCompletedModules = async (currentModule, score) => {
     } catch (error) {
       console.error(error);
     }
-  } else {
-    const newModule = setScoreModule([], currentModule, score);
-    await userRef.set(
-      {
-        completedModules: [newModule],
-      },
-      { merge: true }
-    );
   }
 };
