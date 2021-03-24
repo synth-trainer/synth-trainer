@@ -115,7 +115,7 @@ const FilterCard = ({
             width={200}
             height={200}
           /> */}
-          {value.toFixed(0)} ms
+          {value.toFixed(0)} Hz
           <div className={classes.root}>
             <Slider
               name="Frequency"
@@ -126,7 +126,7 @@ const FilterCard = ({
               aria-labelledby="vertical-slider"
               color="secondary"
               min={0}
-              max={5000}
+              max={10000}
               id={id}
 
               // {...rest}
