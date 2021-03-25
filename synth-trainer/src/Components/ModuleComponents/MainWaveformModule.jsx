@@ -79,12 +79,55 @@ const MainWaveformModule = (props) => {
           “oscillator” sounds complicated, but it’s a fancy word with a simple
           meaning. An oscillator creates a sound.
         </Card.Text>
+
+        <Grid container spacing={1}>
+          <Grid container item xs={12} spacing={3}>
+            <Grid item xs={4}>
+              <WaveformExample
+                waveform="sine"
+                message="A sine wave is the simplest waveform with no harmonics or overtones. 
+                        It generates a smooth, clean sound, much like the way the waveform looks."
+                volume={volume}
+                setVolume={setVolume}
+                buttonHandler={buttonHandler}
+              />
+            </Grid>
+          </Grid>
+          <Grid container item xs={12} spacing={3}>
+            <Grid item xs={4}>
+              <WaveformExample
+                waveform="sine"
+                message="A sine wave is the simplest waveform with no harmonics or overtones. 
+                        It generates a smooth, clean sound, much like the way the waveform looks."
+                volume={volume}
+                setVolume={setVolume}
+                buttonHandler={buttonHandler}
+              />
+            </Grid>
+          </Grid>
+          <Grid container item xs={12} spacing={3}>
+            <Grid item xs={4}>
+              <WaveformExample
+                waveform="sine"
+                message="A sine wave is the simplest waveform with no harmonics or overtones. 
+                        It generates a smooth, clean sound, much like the way the waveform looks."
+                volume={volume}
+                setVolume={setVolume}
+                buttonHandler={buttonHandler}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+
+
+
+
         <Grid item container direction="row" spacing={2} alignItems="center">
           <Grid item xs={12} sm={6} md={5}>
             <WaveformExample
               waveform="sine"
               message="A sine wave is the simplest waveform with no harmonics or overtones. 
-            It generates a smooth, clean sound, much like the way the waveform looks."
+                      It generates a smooth, clean sound, much like the way the waveform looks."
               volume={volume}
               setVolume={setVolume}
               buttonHandler={buttonHandler}

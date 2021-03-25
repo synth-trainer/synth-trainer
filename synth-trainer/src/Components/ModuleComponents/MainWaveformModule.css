@@ -1,3 +1,12 @@
 .customCard {
   background: rgb(200, 200, 206) !important;
 }
+
+
+.d-flex div{
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 2px solid #c6c6cd;
+  color: #000000;
+  text-align: center;
+}
