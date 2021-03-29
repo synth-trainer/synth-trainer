@@ -8,9 +8,15 @@ const useStyles = makeStyles({
   root: {
     height: 50,
   },
-}); 
+});
 
-const FilterCard = ({ filterType, filterFrequency, setFilterFrequency, filterHandler, id }) => {
+const FilterCard = ({
+  filterType,
+  filterFrequency,
+  setFilterFrequency,
+  filterHandler,
+  id,
+}) => {
   const classes = useStyles();
   const [lowpassColor, setLowpassColor] = useState("dimgray");
   const [highpassColor, setHighpassColor] = useState("black");
@@ -109,24 +115,24 @@ const FilterCard = ({ filterType, filterFrequency, setFilterFrequency, filterHan
             width={200}
             height={200}
           /> */}
-          {value.toFixed(0)} ms
+          {value.toFixed(0)} Hz
           <div className={classes.root}>
             <Slider
-            name="Frequency"
-            value={value}
-            onChange={handleSliderChange}
-            onChangeCommitted={handleFilterCommitted}
-            orientation="vertical"
-            aria-labelledby="vertical-slider"
-            color="secondary"
-            min={0}
-            max={5000}
-            id={id}
+              name="Frequency"
+              value={value}
+              onChange={handleSliderChange}
+              onChangeCommitted={handleFilterCommitted}
+              orientation="vertical"
+              aria-labelledby="vertical-slider"
+              color="secondary"
+              min={0}
+              max={10000}
+              id={id}
 
-            // {...rest}
-          />
-        </div>
-        <br />
+              // {...rest}
+            />
+          </div>
+          <br />
         </Grid>
       </Grid>
     </Card>
