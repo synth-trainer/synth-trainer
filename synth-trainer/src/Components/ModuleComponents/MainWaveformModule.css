@@ -1,9 +1,17 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.background {
+  background-image: url("../../Images/Sandbox_Background.jpg");
+  height: 100%;
+}
+
 .customCard {
   background: rgb(200, 200, 206) !important;
 }
 
 
-/* .section {
-  padding-left: 5%;
-  margin: 0;
-} */
+

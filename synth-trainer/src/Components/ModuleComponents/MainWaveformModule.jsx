@@ -74,7 +74,7 @@ const MainWaveformModule = (props) => {
   
 
   return (
-    <div>
+    <div className = "background">
       <Card id="sign-in-card" className="text-center w-50 customCard" alignItems="center">
         <Card.Title id="sign-in-label">Intro: Basic Waveforms</Card.Title>
         <Card.Text>
@@ -83,7 +83,7 @@ const MainWaveformModule = (props) => {
           meaning. An oscillator creates a sound.
         </Card.Text>
         <Card.Body>
-          <Columns columns="2">
+          <Columns columns="2" gap = "3px">
             <WaveformExample
               waveform="sine"
               message="A sine wave is the simplest waveform with no harmonics or overtones. 
@@ -111,7 +111,7 @@ const MainWaveformModule = (props) => {
             />
             <WaveformExample
               waveform="sawtooth"
-              message="Sawtooth waves generate the richest tones of the 4 common waveforms.
+              message="Sawtooth waves are the richest tones of the 4 common waveforms.
               Its waveform consists of linear rises followed by instant amplitude change, similar to the square wave."
               volume={volume}
               setVolume={setVolume}
